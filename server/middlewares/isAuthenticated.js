@@ -19,18 +19,7 @@ const isAuthenticated = async (req, res, next) => {
     req.id = decode.userId;
     next();
   } catch (error) {
-    console.error(error);
-    if (error.name === "TokenExpiredError") {
-      return res.status(401).json({
-        message: "Token expired",
-        success: false,
-      });
-    }
-    return res.status(500).json({
-      message: "Server error",
-      success: false,
-    });
+    console.log(error);
   }
 };
-
 export default isAuthenticated;

@@ -10,7 +10,7 @@ import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 
 dotenv.config({});
-
+    
 // call database connection here
 connectDB();
 const app = express();
@@ -37,5 +37,4 @@ app.use("/api/v1/progress", courseProgressRoute);
 app.listen(PORT, () => {
     console.log(`Server listen at port ${PORT}`);
 })
-
 

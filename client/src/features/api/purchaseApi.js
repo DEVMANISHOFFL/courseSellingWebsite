@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Dynamic base URL for local and production environments
 const COURSE_PURCHASE_API =
   process.env.NODE_ENV === "production"
-    ? "course-selling-website-icif-jzsbj4ei6-devmanishoffls-projects.vercel.app/api/v1/purchase"
+    ? "https://course-selling-website-icif-9ypj4sos5-devmanishoffls-projects.vercel.app/api/v1/purchase"
     : "http://localhost:8080/api/v1/purchase";
 
 export const purchaseApi = createApi({

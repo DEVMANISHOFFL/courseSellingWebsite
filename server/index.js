@@ -10,7 +10,7 @@ import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 
 dotenv.config({});
-    
+
 // call database connection here
 connectDB();
 const app = express();
@@ -21,27 +21,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = [
-    'https://course-selling-website-blue.vercel.app',
-    'https://course-selling-website-icif.vercel.app',
-    'http://localhost:5173'
-  ];
-  
-  app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
-    credentials: true
-  }));
-  
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}));
  
 // apis
 app.use("/api/v1/media", mediaRoute);

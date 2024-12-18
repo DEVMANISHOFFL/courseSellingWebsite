@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURSE_PURCHASE_API =  "https://course-selling-website-blue.vercel.app/api/v1/purchase";
+const COURSE_PURCHASE_API = "http://localhost:8080/api/v1/purchase";
 
 export const purchaseApi = createApi({
   reducerPath: "purchaseApi",
@@ -11,7 +11,7 @@ export const purchaseApi = createApi({
   endpoints: (builder) => ({
     createCheckoutSession: builder.mutation({
       query: (courseId) => ({
-        url: "/checkout/create-checkout-session", 
+        url: "/checkout/create-checkout-session",
         method: "POST",
         body: { courseId },
       }),

@@ -24,7 +24,7 @@ app.use(cookieParser());
 // Dynamic CORS configuration
 const allowedOrigins = [
   "http://localhost:5173", 
-  "course-selling-website-br67xhfnv-devmanishoffls-projects.vercel.app"
+  "https://course-selling-website-blue.vercel.app"
 ];
 
 app.use(

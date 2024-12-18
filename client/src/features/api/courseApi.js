@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// Dynamic base URL for local and production environments
-const COURSE_API =
-  process.env.NODE_ENV === "production"
-    ? "https://coursesellingwebsite.onrender.com/api/v1/course"
-    : "http://localhost:8080/api/v1/course";
+const COURSE_API = "https://coursesellingwebsite.onrender.com/api/v1/course";
 
 export const courseApi = createApi({
   reducerPath: "courseApi",
@@ -22,27 +18,27 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ["Refetch_Creator_Course"],
     }),
-    getSearchCourse: builder.query({
-      query: ({ searchQuery, categories, sortByPrice }) => {
-        // Build query string
-        let queryString = `/search?query=${encodeURIComponent(searchQuery)}`;
+    getSearchCourse:builder.query({
+      query: ({searchQuery, categories, sortByPrice}) => {
+        // Build qiery string
+        let queryString = `/search?query=${encodeURIComponent(searchQuery)}`
 
-        // Append categories
-        if (categories && categories.length > 0) {
+        // append cateogry 
+        if(categories && categories.length > 0) {
           const categoriesString = categories.map(encodeURIComponent).join(",");
-          queryString += `&categories=${categoriesString}`;
+          queryString += `&categories=${categoriesString}`; 
         }
 
-        // Append sortByPrice if available
-        if (sortByPrice) {
-          queryString += `&sortByPrice=${encodeURIComponent(sortByPrice)}`;
+        // Append sortByPrice is available
+        if(sortByPrice){
+          queryString += `&sortByPrice=${encodeURIComponent(sortByPrice)}`; 
         }
 
         return {
-          url: queryString,
-          method: "GET",
-        };
-      },
+          url:queryString,
+          method:"GET", 
+        }
+      }
     }),
     getPublishedCourse: builder.query({
       query: () => ({
@@ -119,7 +115,6 @@ export const courseApi = createApi({
     }),
   }),
 });
-
 export const {
   useCreateCourseMutation,
   useGetSearchCourseQuery,

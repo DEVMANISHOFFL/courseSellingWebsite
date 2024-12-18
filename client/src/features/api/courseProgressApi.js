@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// Dynamic base URL for local and production environments
-const COURSE_PROGRESS_API =
-  process.env.NODE_ENV === "production"
-    ? "https://coursesellingwebsite.onrender.com/api/v1/progress"
-    : "http://localhost:8080/api/v1/progress";
+const COURSE_PROGRESS_API = "https://coursesellingwebsite.onrender.com/api/v1/progress";
 
 export const courseProgressApi = createApi({
   reducerPath: "courseProgressApi",
@@ -22,27 +18,28 @@ export const courseProgressApi = createApi({
     updateLectureProgress: builder.mutation({
       query: ({ courseId, lectureId }) => ({
         url: `/${courseId}/lecture/${lectureId}/view`,
-        method: "POST",
+        method:"POST"
       }),
     }),
+
     completeCourse: builder.mutation({
-      query: (courseId) => ({
-        url: `/${courseId}/complete`,
-        method: "POST",
-      }),
+        query:(courseId) => ({
+            url:`/${courseId}/complete`,
+            method:"POST"
+        })
     }),
     inCompleteCourse: builder.mutation({
-      query: (courseId) => ({
-        url: `/${courseId}/incomplete`,
-        method: "POST",
-      }),
+        query:(courseId) => ({
+            url:`/${courseId}/incomplete`,
+            method:"POST"
+        })
     }),
+    
   }),
 });
-
 export const {
-  useGetCourseProgressQuery,
-  useUpdateLectureProgressMutation,
-  useCompleteCourseMutation,
-  useInCompleteCourseMutation,
+useGetCourseProgressQuery,
+useUpdateLectureProgressMutation,
+useCompleteCourseMutation,
+useInCompleteCourseMutation
 } = courseProgressApi;

@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "course-selling-website-br67xhfnv-devmanishoffls-projects.vercel.app"
+  "course-selling-website-blue.vercel.app"
 ];
 
 app.use(

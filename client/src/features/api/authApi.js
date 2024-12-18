@@ -4,7 +4,7 @@ import { userLoggedIn, userLoggedOut } from "../authSlice";
 // Dynamic base URL for local and production environments
 const USER_API =
   process.env.NODE_ENV === "production"
-    ? "course-selling-website-icif.vercel.app/api/v1/user/"
+    ? "https://coursesellingwebsite.onrender.com//api/v1/user/"
     : "http://localhost:8080/api/v1/user/";
 
 export const authApi = createApi({

@@ -9,32 +9,48 @@ import mediaRoute from "./routes/media.route.js";
 import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 
-dotenv.config({});
+dotenv.config();
 
-// call database connection here
+// Database connection
 connectDB();
-const app = express();
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-// default middleware
+// Default middlewares
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true
-}));
- 
-// apis
+// Dynamic CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "https://course-selling-website-blue.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or CURL)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+// APIs
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
- 
- 
-app.listen(PORT, () => {
-    console.log(`Server listen at port ${PORT}`);
-})
 
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

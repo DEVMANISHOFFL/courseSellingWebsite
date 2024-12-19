@@ -21,11 +21,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
+// CORS configuration
 app.use(cors({
-  origin: '*',  // Allow all origins
+  origin: ['https://course-selling-website-blue.vercel.app', 'http://localhost:5173'],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 
 // apis
 app.use("/api/v1/media", mediaRoute);
@@ -34,8 +36,6 @@ app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
  
- 
 app.listen(PORT, () => {  
     console.log(`Server listen at port ${PORT}`);
-})
-
+});

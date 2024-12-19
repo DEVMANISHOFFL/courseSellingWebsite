@@ -10,7 +10,7 @@ import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 
 dotenv.config({});
-    
+
 // call database connection here
 connectDB();
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin:"https://course-selling-website-blue.vercel.app",
+    origin:"course-selling-website-blue.vercel.app",
     credentials:true
 }));
  
@@ -34,6 +34,7 @@ app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
  
  
-app.listen(PORT, () => {
-    console.log(`Server listen at port ${PORT}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server listen at port ${PORT}`);
+// })
+

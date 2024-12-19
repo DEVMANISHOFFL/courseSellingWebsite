@@ -21,23 +21,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = [
-        "https://course-selling-website-blue.vercel.app",
-        "http://localhost:5173",  // Local development (optional)
-      ];
+app.use(cors({
+  origin: '*',  // Allow all origins
+  credentials: true,
+}));
 
-      if (allowedOrigins.includes(origin) || !origin) {  // Allow requests with no origin (like Postman, etc.)
-        return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
 
 // apis
 app.use("/api/v1/media", mediaRoute);

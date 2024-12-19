@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import { userLoggedIn, userLoggedOut } from "../authSlice";
 
-const USER_API = "https://coursesellingwebsite.onrender.com/api/v1/user/"
+const USER_API = "https://course-selling-website-icif.vercel.app/api/v1/user/"
 
 export const authApi = createApi({
     reducerPath:"authApi",
@@ -14,7 +14,7 @@ export const authApi = createApi({
             query: (inputData) => ({
                 url:"register",
                 method:"POST",
-                body:inputData
+                body:inputData  
             })
         }),
         loginUser: builder.mutation({

@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin:"course-selling-website-blue.vercel.app",
+  origin: "https://course-selling-website-blue.vercel.app",
     credentials:true
 }));
  
